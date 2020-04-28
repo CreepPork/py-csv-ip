@@ -56,8 +56,6 @@ def handle_client_connection(client_socket):
     try:
         request = client_socket.recv(1024)
 
-        print('Received {}'.format(request))
-
         process_request_data(request)
 
         client_socket.send(b'ACK!')
@@ -109,6 +107,8 @@ def process_request_data(request: bytes):
 
 
 def relay_message_contents(csv_data: dict):
+    print('Received {}'.format(csv_data))
+
     headers = {'Authorization': 'Bearer {}'.format(MESSAGE_RELAY_BEARER_TOKEN)}
 
     r = requests.post(MESSAGE_RELAY_ADDR, json=csv_data,
