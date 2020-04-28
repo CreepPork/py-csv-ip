@@ -34,6 +34,7 @@ def accept_connections(server):
         try:
             client_sock, address = server.accept()
 
+            print('')
             print('Accepted connection from {}:{}'.format(
                 address[0], address[1]))
 
