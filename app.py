@@ -58,7 +58,7 @@ def handle_client_connection(client_socket):
 
         process_request_data(request)
 
-        client_socket.send(b'ACK!')
+        # client_socket.send(b'ACK')
         client_socket.close()
     except Exception as e:
         print('{} in handle_client_connection'.format(e))
@@ -70,6 +70,7 @@ def handle_client_connection(client_socket):
 
 
 def process_request_data(request: bytes):
+    print(request)
     contents = request.decode('ASCII').split(',')
 
     username, password, asd_id, message = contents
@@ -111,10 +112,10 @@ def relay_message_contents(csv_data: dict):
 
     headers = {'Authorization': 'Bearer {}'.format(MESSAGE_RELAY_BEARER_TOKEN)}
 
-    r = requests.post(MESSAGE_RELAY_ADDR, json=csv_data,
-                      headers=headers)
+    # r = requests.post(MESSAGE_RELAY_ADDR, json=csv_data,
+  #                    headers = headers)
 
-    print('Sent HTTP request to relay, got {} status'.format(r.status_code))
+    # print('Sent HTTP request to relay, got {} status'.format(r.status_code))
 
 
 if __name__ == "__main__":
