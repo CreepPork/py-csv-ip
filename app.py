@@ -112,10 +112,10 @@ def relay_message_contents(csv_data: dict):
 
     headers = {'Authorization': 'Bearer {}'.format(MESSAGE_RELAY_BEARER_TOKEN)}
 
-    # r = requests.post(MESSAGE_RELAY_ADDR, json=csv_data,
-  #                    headers = headers)
+    r = requests.post(MESSAGE_RELAY_ADDR, json=csv_data,
+                      headers=headers)
 
-    # print('Sent HTTP request to relay, got {} status'.format(r.status_code))
+    print('Sent HTTP request to relay, got {} status'.format(r.status_code))
 
 
 if __name__ == "__main__":
